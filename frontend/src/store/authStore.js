@@ -9,13 +9,14 @@ export const useAuthStore = create((set, get) => ({
     try {
       const user = await mockApi.login(email, password, role);
       if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
         set({ user, isAuthenticated: true });
         return { success: true };
       } else {
         return { success: false, message: 'Неверный email или пароль' };
       }
     } catch (error) {
-      return { success: false, message: error.message || 'Ошибка входа' };
+      return { success: false, message: 'Ошибка входа' };
     }
   },
   register: async (userData) => {
@@ -27,14 +28,14 @@ export const useAuthStore = create((set, get) => ({
         return { success: false, message: 'Пользователь с таким email уже существует' };
       }
     } catch (error) {
-      return { success: false, message: error.message || 'Ошибка регистрации' };
+      return { success: false, message: 'Ошибка регистрации' };
     }
   },
   logout: async () => {
+    localStorage.removeItem('currentUser');
     set({ user: null, isAuthenticated: false });
   },
   checkAuth: async () => {
-    // При загрузке пытаемся восстановить сессию из localStorage
     const savedUser = localStorage.getItem('currentUser');
     if (savedUser) {
       set({ user: JSON.parse(savedUser), isAuthenticated: true, isLoading: false });
