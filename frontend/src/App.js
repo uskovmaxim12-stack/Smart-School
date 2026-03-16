@@ -5,6 +5,7 @@ import { useTheme } from './hooks/useTheme';
 import { ToastContainer } from './components/ui/Toast/Toast';
 import Sidebar from './components/Layout/Sidebar';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Users from './pages/admin/Users';
@@ -33,6 +34,7 @@ function App() {
         <div className={isAuthenticated ? styles.content : styles.fullContent}>
           <Routes>
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
             <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
             <Route path="/users" element={<PrivateRoute roles={['admin']}><Users /></PrivateRoute>} />
