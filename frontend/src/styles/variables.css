@@ -1,41 +1,35 @@
 :root {
-  /* Цвета тёмной темы (основная) */
-  --bg-primary: #0a0f1e;
-  --bg-card: rgba(20, 30, 50, 0.9);
-  --text-primary: #e0e5f0;
-  --text-secondary: #a0b0c0;
-  --accent: #5a9cff;
-  --accent-glow: rgba(90, 156, 255, 0.3);
+  /* Тёмная тема (основная) */
+  --bg-primary: #0c0f1e;
+  --bg-card: rgba(22, 28, 46, 0.95);
+  --text-primary: #f0f4fa;
+  --text-secondary: #9aa9c0;
+  --accent: #5f9eff;
+  --accent-hover: #7bb0ff;
+  --accent-glow: rgba(95, 158, 255, 0.3);
   --success: #2ecc71;
-  --error: #e74c3c;
+  --error: #ff5e7c;
   --warning: #f39c12;
   --info: #3498db;
-  --border: #2a3a55;
+  --border: #2c3d63;
+  --border-light: #3a4c74;
   
-  /* Светлая тема (может переключаться) */
-  --bg-primary-light: #f0f4fa;
+  /* Светлая тема (опционально) */
+  --bg-primary-light: #f0f5ff;
   --bg-card-light: rgba(255, 255, 255, 0.9);
-  --text-primary-light: #1a2634;
-  --text-secondary-light: #4a5a6e;
-  --border-light: #cbd5e0;
+  --text-primary-light: #1e2a3a;
+  --text-secondary-light: #4f5f73;
+  --border-light: #d0ddeb;
   
   /* Общие */
   --font-family: 'Inter', sans-serif;
   --border-radius-sm: 8px;
   --border-radius-md: 12px;
-  --border-radius-lg: 16px;
-  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  --transition: all 0.2s ease;
+  --border-radius-lg: 18px;
+  --box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(95, 158, 255, 0.2);
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --header-height: 64px;
   --sidebar-width: 250px;
-}
-
-body.dark-theme {
-  --bg-primary: var(--bg-primary);
-  --bg-card: var(--bg-card);
-  --text-primary: var(--text-primary);
-  --text-secondary: var(--text-secondary);
-  --border: var(--border);
 }
 
 body.light-theme {
@@ -46,17 +40,7 @@ body.light-theme {
   --border: var(--border-light);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: var(--font-family);
-  background: var(--bg-primary);
+  background-color: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.5;
-  transition: background-color var(--transition), color var(--transition);
-  background-image: radial-gradient(circle at 10% 20%, rgba(90, 156, 255, 0.05) 0%, transparent 30%);
 }
