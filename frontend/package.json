@@ -1,6 +1,7 @@
 {
   "name": "smart-school-frontend",
   "version": "1.0.0",
+  "homepage": "https://uskovmaxim12-stack.github.io/Smart-School",
   "private": true,
   "dependencies": {
     "axios": "^1.6.2",
