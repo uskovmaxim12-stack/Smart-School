@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd frontend
-          npm ci
+          npm install   # поменяли npm ci на npm install
 
       - name: Build
         run: |
