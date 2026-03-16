@@ -46,7 +46,7 @@ const Login = () => {
             required
           />
           <div className={styles.roleSelector}>
-            <label>Выберите роль:</label>
+            <label>Роль:</label>
             <select value={role} onChange={(e) => setRole(e.target.value)} className={styles.select}>
               <option value="student">Ученик</option>
               <option value="teacher">Учитель</option>
