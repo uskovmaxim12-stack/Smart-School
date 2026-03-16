@@ -1,0 +1,41 @@
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  margin-left: 250px;
+  transition: margin-left 0.3s;
+}
+
+.fullContent {
+  flex: 1;
+}
+
+.themeToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: var(--box-shadow);
+  z-index: 100;
+  transition: var(--transition);
+}
+
+.themeToggle:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin-left: 0;
+  }
+}
