@@ -8,10 +8,14 @@
 
 body {
   font-family: var(--font-family);
-  background-color: var(--bg-primary);
+  background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.5;
   transition: background-color var(--transition), color var(--transition);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(90, 156, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 70%, rgba(255, 90, 200, 0.05) 0%, transparent 40%);
+  min-height: 100vh;
 }
 
 /* Скелетные экраны */
@@ -19,9 +23,26 @@ body {
   background: linear-gradient(90deg, var(--bg-card) 25%, var(--border) 50%, var(--bg-card) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
+  border-radius: var(--border-radius-sm);
 }
 
 @keyframes loading {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-card);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7bb0ff;
 }
