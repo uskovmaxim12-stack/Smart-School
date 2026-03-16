@@ -1,38 +1,26 @@
-import axios from 'axios';
+import { mockApi } from './mockApi';
 
-const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000/api',
-  withCredentials: true,
-});
-
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('accessToken');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
-
-api.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
-    if (error.response?.status === 403 && !originalRequest._retry) {
-      originalRequest._retry = true;
-      try {
-        const response = await api.post('/auth/refresh');
-        const { accessToken } = response.data;
-        localStorage.setItem('accessToken', accessToken);
-        originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-        return api(originalRequest);
-      } catch (refreshError) {
-        // Redirect to login
-        window.location.href = '/login';
-        return Promise.reject(refreshError);
-      }
+// Для совместимости с существующим кодом, просто экспортируем mockApi как api
+export const api = {
+  get: async (url) => {
+    // Простейшая имитация GET-запросов
+    if (url === '/users/me') {
+      const user = mockApi.getCurrentUser();
+      return { data: user };
     }
-    return Promise.reject(error);
-  }
-);
+    // По необходимости добавляй другие заглушки
+    return { data: [] };
+  },
+  post: async (url, data) => {
+    if (url === '/auth/login') {
+      const { email, password } = data;
+      // В role передаётся отдельно, но в нашем login она приходит не так, упростим
+      const user = await mockApi.login(email, password, data.role || 'student');
+      return { data: { accessToken: 'fake-token', user } };
+    }
+    return { data: {} };
+  },
+  // Добавь другие методы (put, delete) по необходимости
+};
 
 export default api;
