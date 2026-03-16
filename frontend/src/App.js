@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthStore } from './store/authStore';
 import { useTheme } from './hooks/useTheme';
 import { ToastContainer } from './components/ui/Toast/Toast';
@@ -27,7 +27,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className={styles.app}>
         {isAuthenticated && <Sidebar />}
         <div className={isAuthenticated ? styles.content : styles.fullContent}>
@@ -53,7 +53,7 @@ function App() {
           </button>
         )}
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
