@@ -1,0 +1,49 @@
+.button {
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Размеры */
+.sm { padding: 8px 16px; font-size: 14px; }
+.md { padding: 12px 24px; font-size: 16px; }
+.lg { padding: 16px 32px; font-size: 18px; }
+
+/* Варианты */
+.primary {
+  background-color: var(--accent);
+  color: white;
+}
+.primary:hover:not(:disabled) {
+  background-color: #3a78c2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(74, 144, 226, 0.3);
+}
+
+.secondary {
+  background-color: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+.secondary:hover:not(:disabled) {
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
+.danger {
+  background-color: var(--error);
+  color: white;
+}
+.danger:hover:not(:disabled) {
+  background-color: #c0392b;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
